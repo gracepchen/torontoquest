@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import CharacterSelect from './screens/CharacterSelect'
 import NpcIntro from './screens/NpcIntro'
 import QuestMap from './screens/QuestMap'
@@ -10,43 +10,78 @@ export default function App() {
   const [activeQuest, setActiveQuest] = useState(null)
   const [completedQuests, setCompletedQuests] = useState([])
 
+  // Internal nav stack — drives all back navigation
+  const navStack = useRef(['character-select'])
+
+  // Forward navigation: push to our stack + browser history
+  function navigate(toScreen) {
+    navStack.current = [...navStack.current, toScreen]
+    history.pushState(null, '')
+    setScreen(toScreen)
+  }
+
+  // Pop one level from our stack and update screen
+  const goBack = useCallback(() => {
+    const stack = navStack.current
+    if (stack.length <= 1) return
+    const newStack = stack.slice(0, -1)
+    navStack.current = newStack
+    const dest = newStack[newStack.length - 1]
+    setScreen(dest)
+    setActiveQuest(null)
+  }, [])
+
+  // Intercept browser / Android back button
+  useEffect(() => {
+    // Ensure there's always a history entry to pop so popstate always fires
+    history.pushState(null, '')
+
+    const handlePop = () => {
+      history.pushState(null, '') // re-add sentinel immediately
+      goBack()
+    }
+
+    window.addEventListener('popstate', handlePop)
+    return () => window.removeEventListener('popstate', handlePop)
+  }, [goBack])
+
+  // In-app ◀ buttons call this — goes through history so both paths are identical
+  function handleBack() {
+    history.back()
+  }
+
+  // ── Screen handlers ──────────────────────────────────────────────────────────
+
   function handleStart(charData) {
-    // Reset progress only if the player switched paths
     if (character && charData.path.id !== character.path.id) {
       setCompletedQuests([])
     }
     setCharacter(charData)
-    setScreen('npc-intro')
+    navigate('npc-intro')
+  }
+
+  function handleContinue(charData) {
+    setCharacter(charData)
+    navigate('quest-map')
   }
 
   function handleIntroDone() {
-    setScreen('quest-map')
+    navigate('quest-map')
+  }
+
+  function handleEditCharacter() {
+    navigate('character-select')
   }
 
   function handleSelectQuest(quest) {
     setActiveQuest(quest)
-    setScreen('quest-puzzle')
+    navigate('quest-puzzle')
   }
 
+  // Quest complete: pop quest-puzzle via history.back() so the stack stays consistent
   function handleQuestComplete(questId) {
     setCompletedQuests(prev => prev.includes(questId) ? prev : [...prev, questId])
-    setScreen('quest-map')
-    setActiveQuest(null)
-  }
-
-  function handleBackToMap() {
-    setScreen('quest-map')
-    setActiveQuest(null)
-  }
-
-  function handleEditCharacter() {
-    setScreen('character-select')
-  }
-
-  function handleContinue(charData) {
-    // Update character details (name/title may have changed) but preserve progress
-    setCharacter(charData)
-    setScreen('quest-map')
+    history.back() // → popstate → goBack() → clears quest-puzzle, returns to quest-map
   }
 
   return (
@@ -63,7 +98,7 @@ export default function App() {
         <NpcIntro
           character={character}
           onContinue={handleIntroDone}
-          onBack={() => setScreen('character-select')}
+          onBack={handleBack}
         />
       )}
       {screen === 'quest-map' && character && (
@@ -79,7 +114,7 @@ export default function App() {
           character={character}
           quest={activeQuest}
           completedQuests={completedQuests}
-          onBack={handleBackToMap}
+          onBack={handleBack}
           onComplete={handleQuestComplete}
         />
       )}

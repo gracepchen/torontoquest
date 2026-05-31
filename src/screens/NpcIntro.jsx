@@ -92,9 +92,15 @@ export default function NpcIntro({ character, onContinue, onBack }) {
 
   return (
     <div className="ni-screen">
-      <button className="ni-back" onClick={onBack}>◀</button>
       <div className="ni-header">
-        <p className="ni-welcome">Welcome to the realm</p>
+        <div className="ni-header-top">
+          <button className="ni-back" onClick={onBack}>◀</button>
+          <p className="ni-welcome">Welcome to the realm</p>
+          <div className="ni-header-top-spacer" />
+        </div>
+        <div className="ni-avatar-wrap">
+          <img src={character.path.playerImage} alt={character.name} />
+        </div>
         <p className="ni-name">{character.name} {character.title}</p>
         <p className="ni-archetype">{archetypeLabel}</p>
       </div>

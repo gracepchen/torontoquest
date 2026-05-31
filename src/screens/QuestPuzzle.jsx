@@ -583,7 +583,7 @@ export default function QuestPuzzle({ character, quest, completedQuests, onBack,
 
         {!submitted && (
           <div className="qp-answer-display">
-            <p className="qp-answer-placeholder">[[answer]]</p>
+            <p className="qp-answer-placeholder">Type your answer...</p>
             <div className="qp-player-sprite">🏒</div>
           </div>
         )}

@@ -102,7 +102,7 @@ export default function CharacterSelect({ onStart, onContinue, initialData, comp
       <h1 className="cs-title">Toronto Quest</h1>
 
       <div className="cs-name-section">
-        <label className="cs-name-label">Name</label>
+        <label className="cs-name-label">Adventurer</label>
         <div className="cs-name-input-wrap">
           <input
             className="cs-name-input"

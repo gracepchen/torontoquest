@@ -52,7 +52,7 @@
   font-size: 42px;
   font-weight: 700;
   color: #fff;
-  text-shadow: 1px 1px 3px black;
+  text-shadow: 1px 1px 3px #274490;
   margin-top: 30px;
   text-align: center;
 }
@@ -76,11 +76,19 @@
 .cs-name-input-wrap {
   width: 315px;
   border: 1px solid #212121;
-  background: #fff;
+  /*background: #fff;*/
   height: 40px;
   display: flex;
   align-items: center;
-  border-radius: 50px;
+  /*border-radius: 50px;*/
+  background: 
+  linear-gradient(135deg, transparent 50%, rgba(221, 192, 147, 0.3) 100%), 
+  #fcf8e8;
+  border: 2px solid #bda880;
+  border-radius: 8px; /* Simulates frayed or rolled edges */
+ /* box-shadow: 
+  0 10px 20px rgba(0,0,0,0.15), 
+  inset 0 0 15px rgba(221, 192, 147, 0.5);*/
 }
 
 .cs-name-input {
@@ -157,6 +165,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .cs-card-image {
@@ -281,6 +290,11 @@
   padding: 14px;
   background: #F6F0E7;
   border-radius: 5px;
+   background: 
+  linear-gradient(135deg, transparent 50%, rgba(221, 192, 147, 0.3) 100%), 
+  #fcf8e8;
+  border: 2px solid #bda880;
+  border-radius: 8px;
 }
 
 .cs-detail-img {

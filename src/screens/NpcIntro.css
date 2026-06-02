@@ -134,13 +134,19 @@
 }
 
 .ni-bubble {
-  background: #eee;
+  /*background: #eee;*/
   padding: 12px 12px;
   flex: 1;
   min-height: 57px;
   display: flex;
   align-items: center;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
+    background: 
+  linear-gradient(135deg, transparent 50%, rgba(221, 192, 147, 0.3) 100%), 
+  #fcf8e8;
+  /*border: 2px solid #bda880;*/
+  border-radius: 8px;
+}
 }
 
 .ni-dialogue {

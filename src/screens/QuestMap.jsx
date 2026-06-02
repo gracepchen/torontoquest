@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './QuestMap.css'
 
-const imgMapBg = '/torontomap.png'
+const imgMapBg = '/maptest.png'
 const imgHelm = '/helm.png'
 const imgBlades = '/weapon.png'
 const imgJersey = '/armour.png'
@@ -165,6 +165,13 @@ export default function QuestMap({ character, completedQuests, onSelectQuest, on
           <p className="qm-char-name">{character.name} {character.title}</p>
           <p className="qm-path-label">{character.path.archetype}</p>
         </div>
+        <button className="qm-help-btn" title="Game help">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </button>
       </div>
 
       <div className="qm-map-container">
@@ -197,7 +204,7 @@ export default function QuestMap({ character, completedQuests, onSelectQuest, on
               <div className="qm-quest-info">
                 <p className="qm-quest-name">{quest.name}</p>
                 {isLocked
-                  ? <p className="qm-quest-sub qm-quest-locked-msg">Complete all 3 quests to unlock</p>
+                  ? <p className="qm-quest-sub qm-quest-locked-msg">Equip yourself and sally forth!</p>
                   : <p className="qm-quest-sub">{quest.subtext}</p>
                 }
                 {!isLocked && (
@@ -215,15 +222,16 @@ export default function QuestMap({ character, completedQuests, onSelectQuest, on
 
       <div className="qm-fun-fact">
         <div className="qm-fun-fact-header">
-          <p className="qm-fun-fact-label">Fun Fact</p>
+          <p className="qm-fun-fact-label">Did you know?</p>
           <button className="qm-dice-btn" onClick={() => setFunFact(f => randomFact(f, character.path.id))} title="New fun fact">🎲</button>
         </div>
         <p className="qm-fun-fact-text">{funFact}</p>
       </div>
 
-      <div className="qm-footer-btns">
-        <button className="qm-footer-btn">Game help</button>
-        <button className="qm-footer-btn qm-footer-btn--coffee">Enjoying the game? buy me a coffee</button>
+      <div className="qm-footer">
+        <a className="qm-coffee-link" href="https://www.buymeacoffee.com" target="_blank" rel="noopener noreferrer">
+          Having fun? Buy me a coffee ☕
+        </a>
       </div>
     </div>
   )

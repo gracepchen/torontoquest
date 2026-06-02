@@ -7,7 +7,7 @@ const NPC_INTROS = {
     messages: [
       {
         id: 1,
-        narration: 'You drop unceremoniously into a puff of dust on a cobbled street, a warrior standing guard in the gate ahead of you. He turns and smiles at you.',
+        narration: 'You drop unceremoniously into a puff of dust on a cobbled street. A warrior stands guard in the gate ahead of you. He turns and smiles at you.',
         dialogue: `Greetings, adventurer, welcome to Toronto!`,
       },
       {
@@ -18,7 +18,7 @@ const NPC_INTROS = {
       {
         id: 3,
         narration: 'He shakes his head, distracted.',
-        dialogue: `A story for another time. Hey, listen: the tournament is coming up, and you look like you just might be what we need.\n\nAre you up for some great peril and/or moderate walking on mostly flat ground?`,
+        dialogue: `A story for another time. Listen: the tournament is coming up, and you look like you just might be what we need.\n\nAre you up for some great peril and/or moderate walking on mostly flat ground?`,
       },
       {
         id: 4,
@@ -83,7 +83,7 @@ const NPC_INTROS = {
 
 export default function NpcIntro({ character, onContinue, onBack }) {
   const archetypeLabel = {
-    might: 'Rabid Hockey Fan',
+    might: 'Rabid Hockey Player',
     magic: 'Cuddly City Official',
     moxie: 'Local Trash Panda',
   }[character.path.id] || ''

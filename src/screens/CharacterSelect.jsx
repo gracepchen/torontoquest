@@ -167,7 +167,7 @@ export default function CharacterSelect({ onStart, onContinue, initialData, comp
           className={`cs-start-btn ${canStart ? 'cs-start-btn--active' : ''}`}
           onClick={handleStart}
         >
-          Start your adventure
+          Start your adventure!
         </button>
       )}
     </div>

@@ -157,18 +157,18 @@
   transform: translateX(-50%);
   width: 390px;
   height: 60px;
-  background: #d9d9d9;
+  background: #274490;
   border: none;
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #212121;
+  color: #eee;
   cursor: pointer;
   z-index: 10;
 }
 
 .ni-cta:hover {
-  background: #bbb;
+  background: #5575C7;
 }
 
 @media (max-width: 420px) {

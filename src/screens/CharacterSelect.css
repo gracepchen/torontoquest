@@ -3,8 +3,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 844px;
+  min-height: 544px;
   position: relative;
+  background-image: url('/bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 .cs-name-subtitle-row {
@@ -44,11 +48,12 @@
 }
 
 .cs-title {
-  font-family: 'Cormorant Unicase', sans-serif;
-  font-size: 40px;
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 42px;
   font-weight: 700;
-  color: #333;
-  margin-top: 63px;
+  color: #fff;
+  text-shadow: 1px 1px 3px black;
+  margin-top: 30px;
   text-align: center;
 }
 
@@ -62,15 +67,16 @@
 }
 
 .cs-name-label {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
   color: #212121;
+  font-family: 'Silkscreen', sans-serif;
 }
 
 .cs-name-input-wrap {
   width: 315px;
   border: 1px solid #212121;
-  background: rgba(217, 217, 217, 0.3);
+  background: #fff;
   height: 40px;
   display: flex;
   align-items: center;
@@ -83,26 +89,28 @@
   border: none;
   background: transparent;
   padding: 10px 10px;
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 22px;
   outline: none;
   text-align: center;
-  font-weight: 300;
+  font-weight: 700;
+  color: #274490;
 }
 
 .cs-name-subtitle {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   font-style: italic;
   color: #212121;
 }
 
 .cs-path-title {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
   color: #212121;
-  margin-top: 48px;
+  margin-top: 28px;
   text-align: center;
+  font-family: 'Silkscreen', sans-serif;
 }
 
 .cs-cards {
@@ -245,22 +253,22 @@
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
   cursor: pointer;
-  color: #888;
+  color: #bbb;
   transition: color 0.15s, border-color 0.15s;
 }
 
 .cs-tab:hover {
-  color: #444;
+  color: #274490;
 }
 
 .cs-tab--active {
-  color: #212121;
-  border-bottom-color: #212121;
-  background: #eee;
+  color: #274490;
+  border-bottom-color: #274490;
+  /*background: #F6F0E7;*/
 }
 
 .cs-tab-label {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 13px;
   font-weight: 700;
 }
@@ -271,7 +279,7 @@
   gap: 14px;
   margin: 16px 24px 0;
   padding: 14px;
-  background: rgba(217, 217, 217, 0.35);
+  background: #F6F0E7;
   border-radius: 5px;
 }
 
@@ -333,12 +341,12 @@
   transform: translateX(-50%);
   width: 390px;
   height: 60px;
-  background: #d9d9d9;
+  background: #274490;
   border: none;
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
  font-size: 16px;
   font-weight: 700;
-  color: #212121;
+  color: #eee;
   cursor: pointer;
   opacity: 0.5;
   transition: opacity 0.15s;
@@ -350,7 +358,7 @@
 }
 
 .cs-start-btn:hover.cs-start-btn--active {
-  background: #bbb;
+  background: #5575C7;
 }
 
 .cs-start-btn--continue {

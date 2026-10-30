@@ -543,11 +543,16 @@ export default function QuestPuzzle({ character, quest, completedQuests, onBack,
         </div>
       </div>
 
-      <div className="qp-location-row">
+      <a
+        className="qp-location-row"
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${data.location}, Toronto`)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <span className="qp-location-icon">📍</span>
         <span className="qp-location-label">Starting point</span>
         <span className="qp-location-name">{data.location.toUpperCase()}</span>
-      </div>
+      </a>
 
       <div className="qp-riddle-progress">
         {data.riddles.map((_, i) => (

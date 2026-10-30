@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import './QuestMap.css'
 import TorontoMap from './TorontoMap'
 const imgHelm = '/helm.png'
@@ -38,6 +38,7 @@ const QUESTS = {
       subtext: 'Equip yourself and make your way to the ice!',
       image: imgTrophy,
       isFinal: true,
+      mapGoal: 'the Stanley Cup',
     },
   ],
   magic: [
@@ -65,6 +66,7 @@ const QUESTS = {
       subtext: 'Your well-earned reward awaits at Union Station.',
       image: imgTrophy,
       isFinal: true,
+      mapGoal: 'One Vacation Day',
     },
   ],
   moxie: [
@@ -92,6 +94,7 @@ const QUESTS = {
       subtext: 'Your roots lead to Union Station.',
       image: imgTrophy,
       isFinal: true,
+      mapGoal: 'A Really Perfect Tree',
     },
   ],
 }
@@ -147,7 +150,9 @@ export default function QuestMap({ character, completedQuests, onSelectQuest, on
   const [funFact, setFunFact] = useState(pathFacts[0])
 
   const pathQuests = QUESTS[character.path.id] || QUESTS.might
-  const nonFinalQuests = pathQuests.filter(q => !q.isFinal)
+  const nonFinalQuests = useMemo(() => pathQuests.filter(q => !q.isFinal), [pathQuests])
+  const finalQuest = pathQuests.find(q => q.isFinal)
+  const [mapOpen, setMapOpen] = useState(false)
 
   return (
     <div className="qm-screen">
@@ -159,17 +164,12 @@ export default function QuestMap({ character, completedQuests, onSelectQuest, on
           <p className="qm-char-name">{character.name} {character.title}</p>
           <p className="qm-path-label">{character.path.archetype}</p>
         </div>
-        <button className="qm-help-btn" title="Game help">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        <button className="qm-map-btn" onClick={() => setMapOpen(true)} title="Map of the Kingdom" aria-label="Open map">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round">
+            <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/>
+            <path d="M9 3v15M15 6v15"/>
           </svg>
         </button>
-      </div>
-
-      <div className="qm-map-container">
-        <TorontoMap pathId={character.path.id} />
       </div>
 
       <div className="qm-quests">
@@ -224,6 +224,19 @@ export default function QuestMap({ character, completedQuests, onSelectQuest, on
           Having fun? Buy me a coffee ☕
         </a>
       </div>
+
+      {mapOpen && (
+        <div className="qm-sheet-backdrop" onClick={() => setMapOpen(false)}>
+          <div className="qm-sheet" onClick={e => e.stopPropagation()}>
+            <button className="qm-sheet-handle" onClick={() => setMapOpen(false)} aria-label="Close map" />
+            <p className="qm-sheet-title">Map of the Kingdom</p>
+            <p className="qm-sheet-sub">Find all the pieces to win {finalQuest?.mapGoal}!</p>
+            <div className="qm-sheet-map">
+              <TorontoMap pathId={character.path.id} quests={nonFinalQuests} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -121,6 +121,13 @@
   gap: 6px;
   padding: 8px 16px;
   flex-wrap: wrap;
+  text-decoration: none;
+  color: inherit;
+}
+
+.qp-location-row .qp-location-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .qp-location-icon {

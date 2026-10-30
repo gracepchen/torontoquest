@@ -222,6 +222,8 @@
 /* ── CTA button ── */
 
 .cmp-go-btn {
+  position: sticky;
+  bottom: 0;
   flex-shrink: 0;
   width: 100%;
   height: 60px;

@@ -1,8 +1,6 @@
 .ni-screen {
-  height: 100svh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   background-image: url('/bg.jpg');
   background-size: cover;
   background-position: center top;
@@ -34,11 +32,10 @@
 
 /* ── Scrollable messages ── */
 .ni-messages {
-  flex: 1;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding: 8px 0 16px;
+  padding: 8px 0 10px;
 }
 
 .ni-narration {
@@ -98,7 +95,8 @@
 
 /* ── Sticky CTA ── */
 .ni-cta {
-  flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
   width: 100%;
   height: 60px;
   background: #274490;

@@ -9,8 +9,8 @@ body {
   background: #f0f0f0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  align-items: flex-start;
+  min-height: 100svh;
 }
 
 #root {

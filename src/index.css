@@ -20,8 +20,9 @@ body {
 }
 
 .phone-shell {
-  width: 390px;
-  min-height: 844px;
+  max-width: 390px;
+  width: 100%;
+  min-height: 100svh;
   background: white;
   position: relative;
   overflow-y: auto;
@@ -29,10 +30,6 @@ body {
 }
 
 @media (max-width: 420px) {
-  .phone-shell {
-    width: 100vw;
-    min-height: 100vh;
-  }
   body {
     background: white;
   }

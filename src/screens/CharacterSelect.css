@@ -71,13 +71,14 @@
   font-weight: 400;
   color: #212121;
   font-family: 'Silkscreen', sans-serif;
+  text-align: center;
 }
 
 .cs-name-input-wrap {
   width: 315px;
   border: 1px solid #212121;
   /*background: #fff;*/
-  height: 40px;
+  height: 60px;
   display: flex;
   align-items: center;
   /*border-radius: 50px;*/
@@ -107,7 +108,7 @@
 
 .cs-name-subtitle {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-style: italic;
   color: #212121;
 }
@@ -353,7 +354,7 @@
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  width: 390px;
+  width: min(390px, 100vw);
   height: 60px;
   background: #274490;
   border: none;

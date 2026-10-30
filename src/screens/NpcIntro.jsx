@@ -37,7 +37,6 @@ const NPC_INTROS = {
 }
 
 function renderDialogue(text) {
-  // Bold text surrounded by **
   const parts = text.split(/\*\*(.+?)\*\*/)
   return parts.map((part, i) =>
     i % 2 === 1 ? <strong key={i}>{part}</strong> : part
@@ -49,13 +48,8 @@ export default function NpcIntro({ character, onContinue, onBack }) {
 
   return (
     <div className="ni-screen">
-      <div className="ni-header">
-        <div className="ni-header-top">
-          <button className="ni-back" onClick={onBack}>{'< Back'}</button>
-        </div>
-        <p className="ni-welcome">Welcome to the realm</p>
-        <p className="ni-name">{character.name}</p>
-        <p className="ni-title-line">{character.title}</p>
+      <div className="ni-topbar">
+        <button className="ni-back" onClick={onBack}>{'< Back'}</button>
       </div>
 
       <div className="ni-messages">
@@ -66,9 +60,12 @@ export default function NpcIntro({ character, onContinue, onBack }) {
           const text = msg.replace('{name}', character.name)
           return (
             <div key={i} className="ni-bubble-row">
-              <div className="ni-avatar">
-                <img src={character.path.image} alt={character.path.archetype} />
-              </div>
+              {i === 0
+                ? <div className="ni-avatar">
+                    <img src={character.path.image} alt={character.path.archetype} />
+                  </div>
+                : <div className="ni-avatar-spacer" />
+              }
               <div className="ni-bubble">
                 <p className="ni-dialogue">{renderDialogue(text)}</p>
               </div>

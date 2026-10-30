@@ -4,8 +4,10 @@ import './CharacterSelect.css'
 const TITLES = [
   'the Relentless', 'the Brave', 'the Silly One', 'the Canuck',
   'the Determined', 'the Fearless', 'the Mighty', 'the Scrappy',
-  'the True North', 'the Unstoppable', 'the Polite', 'the Bold',
-  'the Beaver', 'the Treasure Hunter', 'the Survivor', 'the "Tough"'
+  'the Splendid', 'the Unstoppable', 'the Polite', 'the Bold',
+  'the Beaver', 'the Treasure Hunter', 'the Survivor', 'the "Tough"',
+  'the Indomitable', 'the Determined', 'the Beautiful', 'the "Mysterious"',
+  'the Maple Leaf', 'the Quaint', 'the Hobbit', 'the "Sleepy"'
 ]
 
 function randomTitle(current) {
@@ -29,7 +31,7 @@ export default function CharacterSelect({ onNext, initialData }) {
       <h1 className="cs-title">Toronto Quest</h1>
 
       <div className="cs-name-section">
-        <label className="cs-name-label">Adventurer</label>
+        <label className="cs-name-label">Welcome to the realm, <br></br>Adventurer<br></br><br></br></label>
         <div className="cs-name-input-wrap">
           <input
             className="cs-name-input"

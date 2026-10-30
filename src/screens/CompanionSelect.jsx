@@ -82,8 +82,8 @@ function savedToPos(savedIndex) {
 
 export default function CompanionSelect({ name, title, onStart, onContinue, onBack, initialData, completedQuests }) {
   const savedIndex = initialData?.path
-    ? PATHS.findIndex(p => p.id === initialData.path.id)
-    : 0
+  ? PATHS.findIndex(p => p.id === initialData.path.id)
+  : 0
   const [pos, setPos] = useState(savedToPos(Math.max(0, savedIndex)))
   const [animate, setAnimate] = useState(true)
   const touchStartX = useRef(null)
@@ -122,7 +122,7 @@ export default function CompanionSelect({ name, title, onStart, onContinue, onBa
 
   function handleTouchEnd(e) {
     if (touchStartX.current === null) return
-    const dx = e.changedTouches[0].clientX - touchStartX.current
+      const dx = e.changedTouches[0].clientX - touchStartX.current
     if (Math.abs(dx) > 40) {
       dx < 0 ? next() : prev()
     }
@@ -143,55 +143,57 @@ export default function CompanionSelect({ name, title, onStart, onContinue, onBa
   return (
     <div className="cmp-screen">
       <div className="cmp-header">
-        <div className="cmp-title-row">
-          <h1 className="cmp-title">Hail, {name} {title}!</h1>
-          <button className="cmp-edit-btn" onClick={onBack} title="Edit name">
-            <PencilIcon />
-          </button>
-        </div>
+        <p className="cmp-greeting-label">All hail,</p>
+        <p className="cmp-greeting-name">{name}</p>
+        <p className="cmp-greeting-title">{title}!</p>
+        <button className="cmp-edit-btn" onClick={onBack} title="Edit name">
+          <PencilIcon />
+        </button>
         <p className="cmp-subtitle">It's dangerous to go alone.<br />Choose your Canadian:</p>
       </div>
 
-      <div
-        className="cmp-carousel-outer"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className="cmp-body">
         <div
-          className="cmp-carousel-track"
-          style={{
-            transform: `translateX(${trackOffset})`,
-            transition: animate ? 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
-          }}
+          className="cmp-carousel-outer"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          {DISPLAY.map((path, i) => {
-            const Icon = path.icon
-            const isActive = i === pos
-            return (
-              <div
-                key={i}
-                className={`cmp-card ${isActive ? 'cmp-card--active' : ''}`}
-                style={animate ? undefined : { transition: 'none' }}
-                onClick={() => { if (!isActive) { i < pos ? prev() : next() } }}
-              >
-                <div className="cmp-card-header">
-                  <Icon />
-                  <span className="cmp-card-label">{path.label}</span>
+          <div
+            className="cmp-carousel-track"
+            style={{
+              transform: `translateX(${trackOffset})`,
+              transition: animate ? 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+            }}
+          >
+            {DISPLAY.map((path, i) => {
+              const Icon = path.icon
+              const isActive = i === pos
+              return (
+                <div
+                  key={i}
+                  className={`cmp-card ${isActive ? 'cmp-card--active' : ''}`}
+                  style={animate ? undefined : { transition: 'none' }}
+                  onClick={() => { if (!isActive) { i < pos ? prev() : next() } }}
+                >
+                  <div className="cmp-card-header">
+                    <Icon />
+                    <span className="cmp-card-label">{path.label}</span>
+                  </div>
+                  <div className="cmp-card-img">
+                    <img src={path.image} alt={path.archetype} />
+                  </div>
+                  <p className="cmp-card-archetype">{path.archetype}</p>
+                  <p className="cmp-card-tagline">{path.tagline}</p>
                 </div>
-                <div className="cmp-card-img">
-                  <img src={path.image} alt={path.archetype} />
-                </div>
-                <p className="cmp-card-archetype">{path.archetype}</p>
-                <p className="cmp-card-tagline">{path.tagline}</p>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
-      </div>
 
-      <div className="cmp-arrows">
-        <button className="cmp-arrow-btn" onClick={prev} aria-label="Previous">←</button>
-        <button className="cmp-arrow-btn" onClick={next} aria-label="Next">→</button>
+        <div className="cmp-arrows">
+          <button className="cmp-arrow-btn" onClick={prev} aria-label="Previous">←</button>
+          <button className="cmp-arrow-btn" onClick={next} aria-label="Next">→</button>
+        </div>
       </div>
 
       <button className="cmp-go-btn cmp-go-btn--active" onClick={handleGo}>

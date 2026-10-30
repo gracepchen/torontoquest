@@ -4,13 +4,18 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   background: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100svh;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 #root {
@@ -22,7 +27,7 @@ body {
 .phone-shell {
   max-width: 390px;
   width: 100%;
-  min-height: 100svh;
+  min-height: 100dvh;
   background: white;
   position: relative;
   overflow-y: auto;

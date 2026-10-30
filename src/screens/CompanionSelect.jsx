@@ -80,7 +80,7 @@ function savedToPos(savedIndex) {
   return savedIndex >= 0 ? savedIndex + 1 : 1
 }
 
-export default function CompanionSelect({ name, title, onStart, onContinue, onBack, initialData, completedQuests }) {
+export default function CompanionSelect({ name, title, onStart, onContinue, onBack, onEditName, initialData, completedQuests }) {
   const savedIndex = initialData?.path
   ? PATHS.findIndex(p => p.id === initialData.path.id)
   : 0
@@ -146,7 +146,7 @@ export default function CompanionSelect({ name, title, onStart, onContinue, onBa
         <p className="cmp-greeting-label">All hail,</p>
         <p className="cmp-greeting-name">{name}</p>
         <p className="cmp-greeting-title">{title}!</p>
-        <button className="cmp-edit-btn" onClick={onBack} title="Edit name">
+        <button className="cmp-edit-btn" onClick={() => onEditName?.({ name, title })} title="Edit name">
           <PencilIcon />
         </button>
         <p className="cmp-subtitle">It's dangerous to go alone.<br />Choose your Canadian:</p>

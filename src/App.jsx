@@ -81,6 +81,11 @@ export default function App() {
     navigate('companion-select')
   }
 
+  function handleEditName({ name, title }) {
+    setPendingName({ name, title })
+    navigate('character-select')
+  }
+
   function handleSelectQuest(quest) {
     setActiveQuest(quest)
     navigate('quest-puzzle')
@@ -107,6 +112,7 @@ export default function App() {
           onStart={handleStart}
           onContinue={handleContinue}
           onBack={handleBack}
+          onEditName={handleEditName}
           initialData={character}
           completedQuests={completedQuests}
         />

@@ -149,10 +149,10 @@ export default function CompanionSelect({ name, title, onStart, onContinue, onBa
         <button className="cmp-edit-btn" onClick={() => onEditName?.({ name, title })} title="Edit name">
           <PencilIcon />
         </button>
-        <p className="cmp-subtitle">It's dangerous to go alone.<br />Choose your Canadian:</p>
       </div>
 
       <div className="cmp-body">
+        <p className="cmp-subtitle">It's dangerous to go alone.<br />Choose your Canadian:</p>
         <div
           className="cmp-carousel-outer"
           onTouchStart={handleTouchStart}
@@ -191,8 +191,8 @@ export default function CompanionSelect({ name, title, onStart, onContinue, onBa
         </div>
 
         <div className="cmp-arrows">
-          <button className="cmp-arrow-btn" onClick={prev} aria-label="Previous">←</button>
-          <button className="cmp-arrow-btn" onClick={next} aria-label="Next">→</button>
+          <button className="cmp-arrow-btn" onClick={prev} onPointerUp={e => e.currentTarget.blur()} aria-label="Previous">←</button>
+          <button className="cmp-arrow-btn" onClick={next} onPointerUp={e => e.currentTarget.blur()} aria-label="Next">→</button>
         </div>
       </div>
 

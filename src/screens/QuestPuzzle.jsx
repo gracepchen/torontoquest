@@ -534,7 +534,7 @@ export default function QuestPuzzle({ character, quest, completedQuests, onBack,
           </div>
           <div className="qp-quest-info">
             <p className="qp-quest-name">{quest.name}</p>
-            <p className="qp-quest-sub">{quest.subtext}</p>
+            {/*<p className="qp-quest-sub">{quest.subtext}</p>*/}
             <div className="qp-quest-status">
               <span className={`qp-status-dot ${done ? 'qp-status-dot--done' : ''}`} />
               <span className="qp-status-text">{done ? 'Completed' : 'Not completed'}</span>

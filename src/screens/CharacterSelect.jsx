@@ -31,7 +31,7 @@ export default function CharacterSelect({ onNext, initialData }) {
       <h1 className="cs-title">Toronto Quest</h1>
 
       <div className="cs-name-section">
-        <label className="cs-name-label">Welcome to the realm, <br></br>Adventurer<br></br><br></br></label>
+        <label className="cs-name-label">Welcome to the realm, <br></br>Adventurer</label>
         <div className="cs-name-input-wrap">
           <input
             className="cs-name-input"

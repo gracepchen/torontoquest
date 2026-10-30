@@ -72,11 +72,13 @@
 
 .cmp-subtitle {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  font-style: italic;
-  color: #212121;
+  font-size: 11px;
+  font-weight: 500;
+  color: #274490;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   margin: 0;
+  text-align: center;
 }
 
 /* ── Middle body (subtitle + carousel + arrows) ── */
@@ -212,10 +214,16 @@
   line-height: 1;
 }
 
-.cmp-arrow-btn:hover {
-  background: #274490;
-  color: #fff;
-  transform: scale(1.08);
+.cmp-arrow-btn:focus {
+  outline: none;
+}
+
+@media (hover: hover) {
+  .cmp-arrow-btn:hover {
+    background: #274490;
+    color: #fff;
+    transform: scale(1.08);
+  }
 }
 
 

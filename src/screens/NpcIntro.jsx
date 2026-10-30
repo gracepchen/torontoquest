@@ -52,31 +52,33 @@ export default function NpcIntro({ character, onContinue, onBack }) {
         <button className="ni-back" onClick={onBack}>{'< Back'}</button>
       </div>
 
-      <div className="ni-messages">
-        {intro.narration && (
-          <p className="ni-narration">{intro.narration}</p>
-        )}
-        {intro.messages.map((msg, i) => {
-          const text = msg.replace('{name}', character.name)
-          return (
-            <div key={i} className="ni-bubble-row">
-              {i === 0
-                ? <div className="ni-avatar">
-                    <img src={character.path.image} alt={character.path.archetype} />
-                  </div>
-                : <div className="ni-avatar-spacer" />
-              }
-              <div className="ni-bubble">
-                <p className="ni-dialogue">{renderDialogue(text)}</p>
+      <div className="ni-bottom-block">
+        <div className="ni-messages">
+          {intro.narration && (
+            <p className="ni-narration">{intro.narration}</p>
+          )}
+          {intro.messages.map((msg, i) => {
+            const text = msg.replace('{name}', character.name)
+            return (
+              <div key={i} className="ni-bubble-row">
+                {i === 0
+                  ? <div className="ni-avatar">
+                      <img src={character.path.image} alt={character.path.archetype} />
+                    </div>
+                  : <div className="ni-avatar-spacer" />
+                }
+                <div className="ni-bubble">
+                  <p className="ni-dialogue">{renderDialogue(text)}</p>
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
 
-      <button className="ni-cta" onClick={onContinue}>
-        {intro.cta}
-      </button>
+        <button className="ni-cta" onClick={onContinue}>
+          {intro.cta}
+        </button>
+      </div>
     </div>
   )
 }

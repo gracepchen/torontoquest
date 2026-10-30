@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import CharacterSelect from './screens/CharacterSelect'
+import CompanionSelect from './screens/CompanionSelect'
 import NpcIntro from './screens/NpcIntro'
 import QuestMap from './screens/QuestMap'
 import QuestPuzzle from './screens/QuestPuzzle'
@@ -7,6 +8,7 @@ import QuestPuzzle from './screens/QuestPuzzle'
 export default function App() {
   const [screen, setScreen] = useState('character-select')
   const [character, setCharacter] = useState(null)
+  const [pendingName, setPendingName] = useState(null)
   const [activeQuest, setActiveQuest] = useState(null)
   const [completedQuests, setCompletedQuests] = useState([])
 
@@ -52,6 +54,11 @@ export default function App() {
 
   // ── Screen handlers ──────────────────────────────────────────────────────────
 
+  function handleNameDone(nameData) {
+    setPendingName(nameData)
+    navigate('companion-select')
+  }
+
   function handleStart(charData) {
     if (character && charData.path.id !== character.path.id) {
       setCompletedQuests([])
@@ -70,7 +77,8 @@ export default function App() {
   }
 
   function handleEditCharacter() {
-    navigate('character-select')
+    setPendingName({ name: character.name, title: character.title })
+    navigate('companion-select')
   }
 
   function handleSelectQuest(quest) {
@@ -88,8 +96,17 @@ export default function App() {
     <div className="phone-shell">
       {screen === 'character-select' && (
         <CharacterSelect
+          onNext={handleNameDone}
+          initialData={pendingName || character}
+        />
+      )}
+      {screen === 'companion-select' && (
+        <CompanionSelect
+          name={pendingName?.name || character?.name || ''}
+          title={pendingName?.title || character?.title || ''}
           onStart={handleStart}
           onContinue={handleContinue}
+          onBack={handleBack}
           initialData={character}
           completedQuests={completedQuests}
         />

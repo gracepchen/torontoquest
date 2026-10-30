@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './QuestMap.css'
-
-const imgMapBg = '/maptest.png'
+import TorontoMap from './TorontoMap'
 const imgHelm = '/helm.png'
 const imgBlades = '/weapon.png'
 const imgJersey = '/armour.png'
@@ -97,11 +96,6 @@ const QUESTS = {
   ],
 }
 
-const STARS = [
-  { top: '26%', left: '12%' },
-  { top: '14%', left: '65%' },
-  { top: '24%', left: '91%' },
-]
 
 const FUN_FACTS = {
   might: [
@@ -175,10 +169,7 @@ export default function QuestMap({ character, completedQuests, onSelectQuest, on
       </div>
 
       <div className="qm-map-container">
-        <img className="qm-map-bg" src={imgMapBg} alt="Toronto map" />
-        {STARS.map((s, i) => (
-          <div key={i} className="qm-star" style={{ top: s.top, left: s.left }}>★</div>
-        ))}
+        <TorontoMap pathId={character.path.id} />
       </div>
 
       <div className="qm-quests">

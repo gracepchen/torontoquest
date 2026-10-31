@@ -31,7 +31,7 @@ export const PATHS = [
     label: 'Might',
     icon: TrophyIcon,
     archetype: 'Rabid Hockey Player',
-    tagline: '"Puck on, puck off. Hockey stick with me, kid, and you won\'t regret it."',
+    tagline: '"Puck on, puck off. Hockey stick with me, kid; you won\'t regret it."',
     description: 'Unleash the thrill of salt, sweat, and tears.',
     image: '/hockey.jpg',
     npcImage: '/knight.jpg',
@@ -42,7 +42,7 @@ export const PATHS = [
     label: 'Magic',
     icon: SparkleIcon,
     archetype: 'Cuddly City Official',
-    tagline: '"OHIP, hip, hooray! No, but seriously, our myths and powers are crazy cool."',
+    tagline: '"OHIP, hip, hooray! You\'re always invited to this party."',
     description: 'Unlock the unseen powers of the ancient city.',
     image: '/gov.jpg',
     npcImage: '/wizard.jpg',
@@ -143,7 +143,7 @@ export default function CompanionSelect({ name, title, onStart, onContinue, onBa
   return (
     <div className="cmp-screen">
       <div className="cmp-header">
-        <p className="cmp-greeting-label">All hail,</p>
+        <p className="cmp-greeting-label">All hail</p>
         <p className="cmp-greeting-name">{name}</p>
         <p className="cmp-greeting-title">{title}!</p>
         <button className="cmp-edit-btn" onClick={() => onEditName?.({ name, title })} title="Edit name">

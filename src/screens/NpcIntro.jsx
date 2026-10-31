@@ -3,24 +3,24 @@ import './NpcIntro.css'
 
 const NPC_INTROS = {
   might: {
-    cta: "Got it, chief.",
-    narration: "You see a half-dressed hockey player in the street ahead, cursing under his breath at a pair of locked doors. He turns to you and gestures wildly at the entrance.",
+    cta: "You had me at Zamboni.",
+    narration: "You see a half-dressed hockey player outside the stadium, cursing under his breath at a pair of locked doors. He turns to you and gestures wildly at the entrance.",
     messages: [
-      `{name}! Buddy! You gotta help me out here.`,
-      `I'm super late for practice and the Stanley Cup championships are coming up. Coach is gonna be so mad.`,
-      `Don't let him know, but I took too much poutine last night and my hockey stuff is scattered all over town...`,
-      `Come with me to grab my **Helm of Hockey Flow**, **Blades of Glory**, and **Jersey of Destiny**? I'll let you Zamboni the championships!`,
+      `{name}, buddy! You gotta help me out.`,
+      `I'm super late for practice and the **Stanley Cup** is in, like, two minutes... Coach is gonna chew me out again.`,
+      `Okay, look, I might have taken a *little* too much poutine last night and now my hockey gear is who knows where.`,
+      `Could you find my **Helm of Hockey Flow**, **Blades of Glory**, and **Jersey of Destiny**? I'll let you Zamboni the game, pinky promise.`,
     ],
   },
 
   magic: {
-    cta: "Understood. I'll pencil it in.",
-    narration: "A frazzled city official bursts through the doors of New City Hall, juggling a teetering stack of binders and three lanyards. They spot you and wave you over with visible relief.",
+    cta: "I'll pencil it in faster than you can say PRESTO.",
+    narration: "A frazzled city official bursts through the doors of New City Hall, juggling a teetering stack of binders and three lanyards. She spots you and waves you over with visible relief.",
     messages: [
       `{name}! Oh thank goodness. I need your help immediately.`,
-      `The city has lost something critical. One Vacation Day — the only approved one left on the municipal calendar. Vanished after the last budget meeting.`,
-      `Nobody noticed for six months. But I noticed. We need it back before the quarter ends, and quietly.`,
-      `Help me track down the **Top Hat of Justice**, **Gavel of Enough Funding**, and **Coat of Arms**. I will personally approve your paperwork. You have my word and a memo to that effect.`,
+      `The city has lost something critical. **One Vacation Day** - the only one left on the municipal calendar. Vanished after the last budget meeting.`,
+      `We need it back ASAP, so we can all go on our approved 5-minute breaks.`,
+      `Track down the **Top Hat of Justice**, **Gavel of Enough Funding**, and the **Coat of Arms** to figure out where it went. I'll personally approve a lifetime TTC pass. You have my word.`,
     ],
   },
 
